@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Vue.js Recipe - Slideout Menu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+
+
+<body>
+<!-- partial:index.partial.html -->
+<!-- Page Contents -->
+<zap-slideout></zap-slideout>
+<script id="zap-slideout" type="text/x-template">
+  <div class="info">    
+    <h1 class="title" v-if='i.isopen' v-for='i in mytext'>
+      <br/>{{i.title}}<br/><br/><br/>
+    </h1>
+    <introduction v-if='mytext[0].isopen'></introduction>
+    <tourinchengdu v-if='mytext[1].isopen'></tourinchengdu>
+    <studyallsummer v-if='mytext[2].isopen'></studyallsummer>
+    <firsttime v-if='mytext[3].isopen'></firsttime>
+    <epilog v-if='mytext[4].isopen'></epilog>
+  </div>
+<!--左侧菜单区-->
+  <div class="zap-slideout"
+       :class="{ isOpen: isOpen }">
+    <div class="zap-slideout-opener"
+         @click="toggle">{{openerText}}</div>
+    <ul class="zap-slideout-menu">
+      <li class="zap-slideout-menu-item">
+        <img class="zap-emoji"  src='./testpic2.jpg' alt="Zap Emoji" />
+      </li>
+      <li class="zap-slideout-menu-item" v-for="x in mytext" @click='myclick(x)'>
+        {{x.title}}</li>  
+    </ul>
+  </div>
+
+</script>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.22/vue.min.js'></script><script  src="./script.js"></script>
+
+
+</body>
+
+
+</html>
